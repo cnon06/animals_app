@@ -1,10 +1,13 @@
 package com.cnon.myapplication
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(val countryList: MutableList<CountryModel>, val mRV: RecyclerView) : RecyclerView.Adapter<Adapter.ModelViewHolder>() {
@@ -53,7 +56,35 @@ class Adapter(val countryList: MutableList<CountryModel>, val mRV: RecyclerView)
        holder.bindItems(countryList.get(position))
 
 
-       // println("onBindViewHolder position: "+position)
+        holder.flagImage.setOnClickListener { v ->
+
+
+            var gghh = countryList.get(holder.getAdapterPosition())
+
+            println("Resime tıklandı: "+gghh.countryName)
+
+
+            val intent = Intent(v.context, detailactivity :: class.java)
+           intent.putExtra("name",gghh.countryName)
+            intent.putExtra("image",gghh.flagImage)
+            println("image"+gghh.flagImage)
+
+            v.context.startActivity(intent)
+
+            /*
+              countryList.add(holder.getAdapterPosition(),countryList.get(holder.getAdapterPosition()))
+            notifyItemInserted(holder.getAdapterPosition())
+            notifyItemRangeChanged(holder.getAdapterPosition(),countryList.size)
+            if(holder.getAdapterPosition()==1)   mRV.scrollToPosition(0)
+            if(holder.getAdapterPosition()==countryList.size-1)   mRV.scrollToPosition(countryList.size-1)
+             */
+
+
+        }
+
+
+
+        // println("onBindViewHolder position: "+position)
 
         /*
           holder.delete.setOnClickListener {

@@ -22,29 +22,17 @@ class MainActivity : AppCompatActivity()  {
 
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-       // recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         recyclerView.adapter = Adapter(getModels(),recyclerView)
 
         recyclerView.scrollToPosition(0);
 
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu,menu)
-
-        val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-     //   val searchitem = menu?.findItem(R.id.app_bar_search)
-     //   val searchView = searchitem?.actionView as  SearchView
-
-      //  searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
-
-       // searchView.setOnQueryTextListener(this)
 
 
         val searchitem = findViewById<SearchView>(R.id.searchView)
@@ -65,8 +53,6 @@ class MainActivity : AppCompatActivity()  {
                     }
 
                  var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-
-
 
                     recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
